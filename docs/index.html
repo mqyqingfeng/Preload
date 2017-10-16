@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+    <meta name="format-detection" content="telephone=no">
+    <title>预加载与进度条</title>
+    <link rel="stylesheet" href="normalize.css">
+    <link rel="stylesheet" href="index.css">
+</head>
+
+<body>
+    <div class="loadPage" id="loadPage">
+        <div class="loading">
+            <div class="loading-num" id="loading-num">0%</div>
+            <div class="inner">
+                <div class="loading-progress" id="loading-progress"></div>
+            </div>
+        </div>
+    </div>
+    <div class="main">loading 消失，进入主内容区</div>
+    <script type="text/javascript" src="preload.js"></script>
+    <script>
+    var pics = [
+        "https://raw.githubusercontent.com/mqyqingfeng/Preload/master/docs/img/1.jpeg",
+        "https://raw.githubusercontent.com/mqyqingfeng/Preload/master/docs/img/2.jpeg",
+        "https://raw.githubusercontent.com/mqyqingfeng/Preload/master/docs/img/3.jpeg",
+        "https://raw.githubusercontent.com/mqyqingfeng/Preload/master/docs/img/4.jpeg",
+        "https://raw.githubusercontent.com/mqyqingfeng/Preload/master/docs/img/5.jpeg",
+        "https://raw.githubusercontent.com/mqyqingfeng/Preload/master/docs/img/6.jpeg",
+        "https://raw.githubusercontent.com/mqyqingfeng/Preload/master/docs/img/7.jpeg",
+        "https://raw.githubusercontent.com/mqyqingfeng/Preload/master/docs/img/8.jpeg"
+    ]
+
+    var preload = new Preload(pics, {
+        complete: function(successNum, failNum) {
+            setTimeout(function() {
+                document.getElementById("loadPage").style.display = 'none'
+            }, 500)
+        },
+        progress: function(index, total, type) {
+            var progress = document.getElementById("loading-progress");
+            var num = document.getElementById("loading-num");
+
+            var percent = Math.floor(index / total * 100) + '%'
+
+            num.innerHTML = progress.style.width = percent;
+        }
+    });
+    </script>
+</body>
+
+</html>

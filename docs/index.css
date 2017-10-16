@@ -1,0 +1,44 @@
+.loadPage {
+    background: #16bdcc;
+    z-index: 9999;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+}
+
+.loading {
+    position: absolute;
+    width: 100%;
+    left: 0%;
+    top: 25%;
+    margin: 20px auto;
+    text-align: center;
+}
+
+.loading .inner {
+    overflow: hidden;
+    position: relative;
+    z-index: 10;
+    background-color: #fff;
+    margin: 0 5%;
+    text-align: left;
+}
+
+.loading-progress {
+    width: 0;
+    height: 2px;
+    background-color: #ffe400;
+    transition: width 1s ease;
+}
+
+.loading-num {
+    height: 50px;
+    font: 1.5em/30px arial;
+    color: #fff;
+}
+
+.main {
+	text-align: center;
+	margin-top: 150px;
+}
